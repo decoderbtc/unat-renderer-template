@@ -1,4 +1,4 @@
-import type { BlockHeightStr } from "./types";
+import type { BlockHeightStr } from "../../types";
 
 /**
  * renders the content for the given block height

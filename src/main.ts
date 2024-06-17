@@ -1,8 +1,14 @@
-import { render } from "./renderer";
+import { render as simpleRender } from "./examples/simple/renderer";
+import { render as svgRender } from "./examples/svg/renderer";
 
 import type { BlockHeightStr, InscriptionID } from "./types";
 
-let { VITE_BASE_URL } = import.meta.env;
+let { VITE_BASE_URL, VITE_RENDERER = "simple" } = import.meta.env;
+
+let rendererLookup = {
+  simple: (block: BlockHeightStr) => simpleRender(block),
+  svg: (block: BlockHeightStr) => svgRender(block).outerHTML,
+};
 
 let formContainer = document.querySelector("aside");
 let input = document.querySelector("input") as HTMLInputElement;
@@ -19,7 +25,7 @@ let mintInscriptionId = document
 let updateContent = (block: BlockHeightStr) => {
   let viewer = document.querySelector("section");
   if (viewer) {
-    viewer.innerHTML = render(block);
+    viewer.innerHTML = rendererLookup[VITE_RENDERER](block);
   }
 };
 

@@ -24,13 +24,13 @@ Navigate to the URL provided.
 
 # Development
 
-The `render` method in `src/renderer.ts` is your entry point to development. From here you can use the block number from a mint inscriptions or the manual input field to power your UNAT.
+Examples of different ways to render content can be found in the `examples` directory. The default example used is the `simple` renderer. Rendering examples can be switched by changing the `VITE_RENDERER` environment variable.
 
-The inline comments in `src/renderer.ts`, `src/main.ts`, `.env` & `.env.production` aim to give an insight into what is going on under the hood.
+The `src/main.ts` folder contains logic to either read the value entered in the input field or use the inscription id injected by marketplaces to interpret the block number minted.
 
 # Testing
 
-Test your render method in `src/renderer.test.ts`.
+Each example has accompanying tests to provide examples on how to test your renderer.
 
 Run the tests with `npm test`.
 
